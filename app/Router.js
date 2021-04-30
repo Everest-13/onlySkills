@@ -330,7 +330,7 @@ module.exports = function (app) {
     });
 
     app.get('/employee/settings/download-rgpd', is_authentificatedAsEmployee, function (req, res) {
-        res.send('download');
+        res.send(userModel.downloadDataCompany(req.session.userid));
     });
 
     app.post('/employee/settings/delete-account', parseForm, csrfProtection, is_authentificatedAsEmployee, function (req, res) {
