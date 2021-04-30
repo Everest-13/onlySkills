@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Tableau de bord - OnlySkills</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/assets/css/tailwind/tailwind.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/metis-assets/icons/icon.png">
+    <script src="/assets/js/main.js"></script>
+</head>
+<body class="antialiased bg-body text-body font-body">
+
+{{ >  menuAdmin}}
+
+            <h1 class="text-3xl  font-semibold text-gray-900"> Vos messages  </h1>
+            <h1 class=" mt-12 text-lg font-semibold text-gray-900">Echangez ici avec les membres du site  </h1>
+
+            <section class="py-20 bg-blueGray-50">
+                <div class="container px-4 mx-auto">
+                    <table class="w-full bg-white rounded shadow">
+                        <thead>
+                        <tr class="text-left text-lg"><th class="pl-6 py-4  font-black">Objet du message :</th><th class="px-4 py-4 font-black">Date : </th><th class="px-4 py-4 font-black">Numéro du candidat : </th><th class="px-4 py-4 font-black">Lien vers la conversation : </th></tr>
+                        </thead>
+                        <tbody class=" text-xs ml-12">
+                        {{#conv}}
+
+                        <tr class="border-t border-blueGray-100 ">
+                            <td class="px-4 py-2 ">
+
+                                <p class="font-semibold">{{announce}}</p>
+
+                            </td>
+
+                            <td class="px-4 py-2">
+                                <p class="font-semibold">{{date}}</p>
+
+                            </td>
+
+                            <td class="px-4 py-2">
+                                <p class="font-semibold">{{forAdmin}}   </p>
+
+                            </td>
+                            <td class="px-4 py-2 text-xs">
+                                <span class="inline-block py-1 px-3 text-xs text-blue-600 bg-blue-100 font-semibold uppercase rounded-full hover:bg-blue-300">
+                                    <form  method="post" action="/admin/conversation" >
+                                    <input name="idSender" type="hidden" hidden value="{{idSender}}">
+                                <input name="idDest"  type="hidden"  value="{{idDest}}">
+                                        <a class="hover:text-blueGray-600" ><button type="submit"> Répondre</button></a>
+                                    </form>
+                                </span>
+                            </td>
+                        </tr>
+
+                        {{/conv}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

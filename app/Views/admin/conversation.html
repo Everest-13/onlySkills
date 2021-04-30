@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Discussion- OnlySkills</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/assets/css/tailwind/tailwind.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/metis-assets/icons/icon.png">
+    <script src="/assets/js/main.js"></script>
+</head>
+<body class="antialiased bg-body text-body font-body">
+
+{{ > menuAdmin}}
+            <main class="flex-1 relative  focus:outline-none" tabindex="0">
+                <div class="">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <h1 id="textForSection" class="text-2xl font-semibold text-gray-900">Discutez avec :</h1>
+                    </div>
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 ">
+                        <!-- Replace with your content -->
+                        <div id="messagesSection" class="flex-1 p:2 sm:p-6 justify-between flex flex-col">
+                            <div id="whoIsTalking" class="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex flex-col leading-tight">
+                                        <div class="text-2xl mt-1 flex items-center">
+                                            {{#conv}}
+                                            <span class="text-gray-700 mr-3">{{name}}</span>
+                                        </div>
+                                        <span class="text-lg text-gray-600"> {{Company}}</span>
+                                        {{/conv}}
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!--Messages envoyes-->
+                            {{#messages}}
+                            <div class="chat-message">
+                                <div class="flex items-end {{justifyEnd}}">
+                                    <div class="flex flex-col space-y-2 mb-5 text-md max-w-xs mx-2 {{order}}">
+                                        <div><span class="px-4 py-2 rounded-lg inline-block {{rounded}} ">{{content}}</span>
+                                            {{#users}}
+                                            <form action="/admin/{{button}}_message-form" method="post"> <input name="other" hidden value="{{other}}"> <input hidden  name="messageId"value="{{id}}"> <button class="text-xs" type="submit">{{button}}</button> </form></p>
+                                        </div>{{/users}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{/messages}}
+                            <div id="sendMessageSection" class="border-t-2 border-gray-200 px-4 pt-4 mb-0 sm:mb-0">
+                                <div class="relative flex">
+
+                                    <form action="/admin/conversation" method="post">
+                                        {{#users}}
+                                        <input name="other"   type="hidden"  value="{{other}}">
+
+                                        {{/users}}
+                                        <input type="text" name="newMessageContent" placeholder="Ecrivez quelque chose " class="w-full focus:outline-none focus:placeholder-gray-900 text-gray-600 placeholder-gray-900 pl-8 bg-gray-200 rounded-full mb-0 py-3">
+                                        <div class="absolute right-0 items-center inset-y-0  sm:flex">
+                                            <button onclick="" type="submit"  class="inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none" >
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 transform rotate-90">
+                                                    <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- /End replace -->
+                    </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+
+
+
+
+    let screenWidth = screen.width;
+    let widthForMessages =
+        (screenWidth - document.getElementById('bandeauNav').offsetWidth)
+        + (screenWidth - document.getElementById('whoIsTalking').offsetWidth)
+        - 100;
+    document.getElementById('messagesSection').style.height = widthForMessages + "px";
+
+    var scrollMessagesBottom = document.getElementById("messages");
+    scrollMessagesBottom.scrollTop = scrollMessagesBottom.scrollHeight;
+</script>
+
+
+</body>
+</html>

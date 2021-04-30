@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Compte ajouté  !  - OnlySkills</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/assets/css/tailwind/tailwind.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/metis-assets/icons/icon.png">
+    <script src="/assets/js/main.js"></script>
+</head>
+<body>
+
+{{ > header}}
+
+<section class="pt-20 pb-24 bg-blue-600">
+    <div class="container px-4 mx-auto">
+        <div class="max-w-xl mx-auto text-center">
+            <span class="inline-block text-xs py-1 px-3 bg-blue-500 text-white font-semibold rounded-xl">Vous voila parmis nous  ! </span>
+            <h2 class="my-3 text-3xl md:text-4xl text-white font-bold font-heading">{{#name}}{{name}}{{/name}} , votre  compte a bien été créé  !  </h2>
+            <p class="text-sm md:text-base text-white">Vous pouvez maintenant vous connecter </p>
+            <div class="mt-10"><a class="inline-block py-4 px-8 text-xs text-blue-600 hover:text-white font-semibold leading-none bg-white hover:bg-blue-600 border hover:border-white rounded transition duration-300" href="/signin">Se connecter</a></div>
+        </div>
+    </div>
+</section>
+
+{{  >  footer}}
+
+</body>
+</html>

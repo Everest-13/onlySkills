@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Offres - OnlySkills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/assets/css/tailwind/tailwind.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/metis-assets/icons/icon.png">
+    <script src="/assets/js/main.js"></script>
+
+</head>
+<body>
+{{ > menuAdmin}}
+
+
+<section class="py-4 bg-blueGray-50">
+    <div class="container px-4 mx-auto">
+
+
+        <table class="w-full bg-white rounded shadow">
+            <thead>
+            <tr class="text-left text-xs">
+                <th class="pl-6 py-4 font-normal">
+                    Contenu du message
+                </th>
+                <th class="pl-6 py-4 font-normal">
+                    Plaignant
+                </th>
+                <th class="pl-6 py-4 font-normal">
+                    Accusé
+                </th>
+                <th class="px-4 py-4 font-normal">
+                    Motif
+                </th>
+                <th class="px-4 py-4 font-normal">
+                    Date
+                </th>
+
+
+                <th class="px-4 py-4 font-normal">
+                    Supprimer le signalement                    </th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#messages}}
+
+            <tr class="border-t border-blueGray-100">
+                <td class="px-4 py-2 text-xs font-semibold">{{contentMessage}}</td>
+                <td class="px-4 py-2 text-xs font-semibold">{{idSender}} {{NameSender}}</td>
+                <td class="px-4 py-2 text-xs font-semibold">{{idDest}} {{NameDest}}</td>
+                <td class="px-4 py-2 text-xs font-semibold">{{reason}}</td>
+
+
+                <td class="px-4 py-2 text-xs font-semibold">{{date}}</td>
+                <td><form method="post" action="/admin/deleteReport" ><span class="inline-block py-1 px-3 text-xs text-red-600 bg-red-100 font-semibold uppercase rounded-full"><input type="hidden" name="id" value="{{id}}">    <input value="{{idSender}}" type="hidden" name="idSender" ><button type="submit">Supprimer</button></span></form></td>
+                </span>
+
+            </tr>
+
+
+            {{/messages}}
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+
+</body>
+</html>

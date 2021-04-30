@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Contact - OnlySkills</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/assets/css/tailwind/tailwind.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/metis-assets/icons/icon.png">
+    <script src="/assets/js/main.js"></script>
+</head>
+<body class="antialiased bg-body text-body font-body">
+<div class="">
+
+    {{ > header }}
+
+    <section class="relative container px-4 mx-auto">
+        <div class="hidden lg:block absolute inset-0 w-1/2 ml-auto bg-blue-600">
+            <div class="flex items-end h-full"><img class="lg:max-w-lg mx-auto" src="/assets/metis-assets/illustrations/gamer.png" alt=""></div>
+        </div>
+        <div class="container px-4 mx-auto">
+            <div class="relative flex flex-wrap">
+                <div class="w-full lg:w-1/2 py-16 lg:pr-20">
+                    <div class="mb-6">
+                        <p class="text-sm text-blueGray-400">Nous sommes heureux d'avoir un retour ! </p>
+                        <h2 class="text-4xl">Ecrivez-nous!</h2>
+                    </div>
+                    <div>
+                        <form>
+                            <div class="mb-4 text-sm">
+                                <span class="mr-4 font-semibold">Je suis :</span>
+                                <label class="mr-4">
+                                    <input class="mr-1" type="radio" name="department" value="1" checked="">
+                                    <span>une entreprise</span>
+                                </label>
+                                <label>
+                                    <input class="mr-1" type="radio" name="department" value="2">
+                                    <span>un particulier</span>
+                                </label>
+                            </div>
+                            <div class="mb-4">
+                                <input class="w-full p-4 text-xs font-semibold leading-none bg-blueGray-50 rounded outline-none" type="text" placeholder="Sujet">
+                            </div>
+                            <div class="mb-4">
+                                <input class="w-full p-4 text-xs font-semibold leading-none bg-blueGray-50 rounded outline-none" type="text" placeholder="Pseudo">
+                            </div>
+                            <div class="mb-4">
+                                <input class="w-full p-4 text-xs font-semibold leading-none bg-blueGray-50 rounded outline-none" type="email" placeholder="name@example.com">
+                            </div>
+                            <div class="mb-4"><textarea class="w-full h-24 p-4 text-xs font-semibold leading-none resize-none bg-blueGray-50 rounded outline-none" type="text" placeholder="Message..."></textarea></div>
+                            <div class="mb-4">
+                                <label class="flex px-2 bg-blueGray-50 rounded">
+                                    <input class="hidden" type="file" placeholder="Choose file.." name="Choose file">
+                                    <div class="my-1 ml-auto px-4 py-3 text-xs text-white font-semibold leading-none bg-blueGray-500 hover:bg-blueGray-600 rounded cursor-pointer">Parcourrir</div>
+                                </label>
+                            </div>
+                            <div>
+                                <label class="block mb-4">
+                                    <input class="mr-1" type="checkbox" name="terms" value="1">
+                                    <span class="text-sm font-semibold">J'ai lu et accepte les  <a href="/tos" class="hover:text-blueGray-700 underline">termes et conditions</a></span>
+                                </label>
+                                <button class="block w-full py-4 px-8 text-sm text-white font-semibold leading-none bg-blue-600 hover:bg-blue-700 rounded" type="submit">Envoyer </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ > footer}}
+</div>
+</body>
+</html>
+

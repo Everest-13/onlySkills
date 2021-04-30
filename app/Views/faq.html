@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>FAQ - OnlySkills</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/assets/css/tailwind/tailwind.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/metis-assets/icons/icon.png">
+    <script src="/assets/js/main.js"></script>
+</head>
+<body class="antialiased bg-body text-body font-body">
+<div class="">
+
+    {{ > header }}
+
+    <section>
+        <div class="flex container px-4 mx-auto w-full lg:h-full">
+            <div class="hidden lg:block lg:relative lg:w-1/3 bg-blue-600">
+                <div class="absolute right-0 md:-mr-32 mt-24 flex items-center"><img class="lg:max-w-lg" src="/assets/metis-assets/illustrations/hardworking-man.png" alt=""></div>
+            </div>
+            <div class="flex-1 lg:pl-32 py-20 min-h-screen lg:py-16">
+                <div class="max-w-2xl px-4 mx-auto lg:ml-0">
+                    <h3 class="mb-8 text-4xl font-bold font-heading">Questions fréquentes</h3>
+                    <ul class="space-y-8">
+                        <li>
+
+                            <button  onclick="show(Q1,IMG1)" class="w-full flex justify-between items-center text-left font-bold font-heading hover:text-blueGray-700">
+                                <span>Comment s'inscrire ?</span>
+                                <svg class="w-4 h-4 ml-2 text-blueGray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path id="IMG1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <p id="1Q"  hidden = false class=" mt-2 text-blueGray-400 font-normal leading-looose">Pour vous inscrire vous devez remplir ce <a href="/signup" class="hover:text-blueGray-700 underline">formulaire </a>. <br><br> Il vous sera demandé de remplir des informations comme votre pseudo, votre mot de passe ainsi qu'un <question></question> vous devrez répondre favorablement en cas d'oubli de mot de passe..<br><br>Mais pas de panique ces informations ne seront jamais partagées !  </p>
+                        </li>
+                        <li>
+                            <button onclick="show(Q2,IMG2)" class="w-full flex justify-between items-center text-left font-bold font-heading hover:text-blueGray-700  ">
+                                <span>Quels documents dois-je fournir ?</span>
+                                <svg class="w-4 h-4 ml-2 text-blueGray-300 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path id="IMG2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <p  id="2Q" hidden=true class="mt-2 text-blueGray-400 font-normal leading-loose">Si vous êtes une entreprise , vous n'avez rien à fournir. <br>Postez uniquement vos offres d'emploi et laissez vos futurs employés vous contacter ! <br> <br> Si vous êtes à la recherche d'emploi vous pouvez déposer ou éditer votre CV et votre lettre de motivation.<br><br> Nous ne demandons aucun justificatif de diplomes , aucun justificatif juridique pour les entreprises ,nous vous faisons confiance. Le site fonctionne sur la confiance mutuelle entre la société et le futur employé. </p>
+
+                        </li>
+                        <li>
+                            <button onclick="show(Q3,IMG3)"  class="w-full flex justify-between items-center text-left font-bold font-heading hover:text-blueGray-700">
+                                <span>Comment répondre à une annonce ?</span>
+                                <svg class="w-4 h-4 ml-2 text-blueGray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path id="IMG3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <p  id="3Q"  hidden = true class=" mt-2 text-blueGray-400 font-normal leading-loose">Pour répondre à une annonce il suffit de contacter l'entreprise qui l'a deposée via notre système de messagerie. <br> <br> L'entreprise pourra alors consulter votre CV et votre lettre de motivation <br><br></p>
+                        </li>
+                        <li>
+                            <button onclick="show(Q4,IMG4)" class="w-full flex justify-between items-center text-left font-bold font-heading hover:text-blueGray-700">
+                                <span>Quelles données collectons nous ?</span>
+                                <svg class="w-4 h-4 ml-2 text-blueGray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path  id="IMG4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <p id="4Q" hidden = true class=" mt-2 text-blueGray-400 font-normal leading-loose"> Nous concervons vos données de compte (Identifiant , mot de passe réponses aux questions personnelles) , nous concervons les messages envoyés et reçus.<br><br> Nous concervons les CV et letres de motivations de nos futurs employés et les offres de nos entreprises. <br><br> Nous ne collectons aucune autre donnée et nous ne revendons ou communicons aucune donnée à aucune société tièrce ,état, organisation. <br><br> Tout cela est expliqué  dans la  <a href="/privacy-policy" class="hover:text-blueGray-700 underline">politique de confidentialité.</a> </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ > footer }}
+</div>
+
+<script>
+    let Q1 = document.getElementById('1Q');
+    let Q2 = document.getElementById('2Q');
+    let Q3 = document.getElementById('3Q');
+    let Q4 = document.getElementById('4Q');
+
+
+    let IMG1 = document.getElementById('IMG1');
+    let IMG2 = document.getElementById('IMG2');
+    let IMG3 = document.getElementById('IMG3');
+    let IMG4 = document.getElementById('IMG4');
+
+
+
+
+
+    function show(Paragraph , IMG){
+
+        if(Paragraph.hidden){
+            Paragraph.hidden = false;
+            IMG.d ="M19 9l-7 7-7-7";
+
+
+        }
+        else{
+            Paragraph.hidden = true;
+            IMG.d ="M9 5l7 7-7 7";
+
+
+        }
+
+    }
+
+    function changeButton(d){
+        console.log(d);
+    }
+
+
+
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Offres - OnlySkills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/assets/css/tailwind/tailwind.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/metis-assets/icons/icon.png">
+    <script src="/assets/js/main.js"></script>
+
+</head>
+<body>
+{{ > menuAdmin}}
+
+
+<section class="py-4 bg-blueGray-50">
+    <div class="container px-4 mx-auto">
+
+        <form    id="form"   method="get" class="flex justify-center max-w-3xl mx-auto mb-16">
+            <input id="query" class="w-2/3 p-4 text-xs placeholder-blueGray-800 font-bold font-heading bg-white focus:border-gray-500 focus:outline-none rounded-l"  name="q" placeholder="Cherchez un poste particulier, une entreprise...">
+            <button  type="submit"   class="pr-4 rounded-r bg-white text-blue-600 hover:bg-blue-600 hover:text-white"><a id="ref" href="">Rechercher</a>
+
+            </button>
+        </form>
+
+        <table class="w-full bg-white rounded shadow">
+            <thead>
+            <tr class="text-left text-xs">
+                <th class="pl-6 py-4 font-normal">
+                    Entreprise
+                </th>
+                <th class="pl-6 py-4 font-normal">
+                    ID du posteur
+                </th>
+                <th class="pl-6 py-4 font-normal">
+                    Titre
+                </th>
+                <th class="px-4 py-4 font-normal">
+                    Poste
+                </th>
+                <th class="px-4 py-4 font-normal">
+                    Ville
+                </th>
+                <th class="px-4 py-4 font-normal">
+                    Salaire brut par an
+                </th>
+                <th class="px-4 py-4 font-normal">
+                    Date
+                </th>
+
+
+                <th class="px-4 py-4 font-normal">
+                    Supprimer l'offre                    </th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#offers}}
+
+            <tr class="border-t border-blueGray-100">
+                <td class="px-4 py-2 text-xs font-semibold">{{company}}</td>
+                <td class="px-4 py-2 text-xs font-semibold">{{idSender}}</td>
+
+                <td class="px-4 py-2 text-xs font-semibold">{{title}}</td>
+                <td class="px-4 py-2 text-xs font-semibold">{{job}}</td>
+                <td class="px-4 py-2 text-xs font-semibold">{{city}}</td>
+                <td class="px-4 py-2 text-xs font-semibold">{{pay}}</td>
+                <td class="px-4 py-2 text-xs font-semibold">{{date}}</td>
+                <td><form method="post" action="/admin/delete" ><span class="inline-block py-1 px-3 text-xs text-red-600 bg-red-100 font-semibold uppercase rounded-full"><input type="hidden" name="IdAnnonce" value="{{id}}">    <input value="{{idSender}}" type="hidden" name="idSender" ><button type="submit">Supprimer</button></span></form></td>
+                </span>
+
+            </tr>
+
+
+            {{/offers}}
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+
+</body>
+</html>

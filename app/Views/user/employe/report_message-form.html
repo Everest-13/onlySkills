@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Signaler un message - OnlySkills</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/assets/css/tailwind/tailwind.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-tailwind.png">
+    <script src="/assets/js/main.js"></script>
+</head>
+<body class="antialiased bg-body text-body font-body">
+<div class="">
+
+    <section class="py-20">
+        <div class="container px-4 mx-auto">
+            <div class="flex flex-wrap justify-center items-center -mx-3">
+                <div class="w-full lg:w-1/2 mb-8 text-center lg:text-left">
+                    <h2 class="text-3xl mb-4 lg:text-4xl font-bold font-heading">
+                        <span>Signaler un message<br> </span>
+                    </h2>
+                    <p class="text-blueGray-800">Quelque chose s'est mal passé ?<br><br>Notre équipe se chargera
+                        d'examiner votre signalement <br><br>Aidez nous à résoudre votre problème en nous disant
+                        pourquoi vous voudriez signaler ce message :</p>
+                    {{#message}}
+                    <p class="mt-10"> Message envoyé le <span class="font-black text-blue-900">{{dateOfSending}} </span>
+                        par l'utilisateur de numéro <span class=" font-black text-blue-900">{{idSender}} </span> et de
+                        contenu <span class="font-black text-blue-900">{{messageContent}} </span></p>
+
+
+                </div>
+                <div class="w-full lg:w-1/2 px-3">
+                    <div class="flex flex-wrap max-w-lg mx-auto">
+                        <form action="/employee/checkSignaler_message" method="post">
+                            <input hidden name="id" value="{{id}}">
+                            <textarea
+                                    class=" min-h-600  border-opacity-100 border  border-light-blue-500  appearance-none w-full p-4 text-xs font-semibold leading-none bg-blueGray-50 rounded outline-none"
+                                    name="desc" placeholder="Que s'est il passé..."></textarea>
+                            <button class="w-full md:w-auto py-4 px-8 text-xs ml-10 text-white font-semibold leading-none bg-blue-600 hover:bg-blue-700 rounded"
+                                    type="submit">Valider le signalement
+                            </button>
+                            {{/message}}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Supprimer un compte  - OnlySkills</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="/assets/css/tailwind/tailwind.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-tailwind.png">
+    <script src="/assets/js/main.js"></script>
+</head>
+<body class="antialiased bg-body text-body font-body">
+<div class="">
+    {{#user}}
+    <section class="py-20">
+        <div class="container px-4 mx-auto">
+            <div class="flex flex-wrap justify-center items-center -mx-3">
+                <div class="w-full lg:w-1/2 mb-8 text-center lg:text-left">
+                    <h2 class="text-3xl mb-4 lg:text-4xl font-bold font-heading">
+                        <span>Supprimer un compte<br> </span>
+                    </h2>
+                    <p class="text-blueGray-800">En êtes vous sûr ?  {{firstName}}  {{lastName}} verra son compte supprimé<br>Cette action est irréversible</p>
+
+
+
+                </div>
+                <div class="">
+                    <div class="flex flex-wrap max-w-lg mx-auto">
+                        <form action="/admin/deletedAccount" method="post">
+                            <input    hidden name="id" value="{{id}}">
+                            <button class="w-full md:w-auto py-4 px-8 text-xs ml-10 text-white font-semibold leading-none bg-blue-600 hover:bg-blue-700 rounded" type="submit">Valider </button>
+                            <button class="w-full md:w-auto py-4 px-8 text-xs ml-10 text-white font-semibold leading-none bg-blue-600 hover:bg-blue-700 rounded"  type="reset"><a href="/admin/dashboard">Retour au menu</a>  </button>
+
+                        </form>
+
+                        {{/user}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

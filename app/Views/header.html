@@ -1,0 +1,142 @@
+<section>
+    <div class="container px-4 mx-auto">
+        <nav class="flex justify-between items-center py-6">
+            <a class="inline-block mx-auto mb-10 lg:mb-0 lg:ml-0 lg:mr-auto text-3xl font-semibold leading-none" href="/"><img class="h-10" src="/assets/metis-assets/logos/metis/logo.png" alt="OnlySkills" width="auto"></a>
+            <div class="lg:hidden">
+                <button class="navbar-burger flex items-center py-2 px-3 text-blue-600 hover:text-blue-700 rounded border border-blue-200 hover:border-blue-300">
+                    <svg class="fill-current h-4 w-4 " viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <title>Menu </title>
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+                    </svg>
+                </button>
+            </div>
+            <ul class="hidden lg:flex lg:items-center lg:w-auto lg:space-x-12">
+                <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500 ml-4" href="/">Accueil</a></li>
+                <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500 ml-4" href="/offers/">Offres</a></li>
+                <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500 ml-4" href="/faq">FAQ</a></li>
+                <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500 mr-10" href="/contact">Contact</a></li>
+            </ul>
+            {{#authenticated}}
+                <div class="hidden lg:block ml-4 flex items-center md:ml-6">
+
+                    <div class="ml-3 relative">
+                        <div>
+                            <button onclick="if(document.getElementById('menuDeroulant').style.display == 'none'){document.getElementById('menuDeroulant').style.display = 'block';} else {document.getElementById('menuDeroulant').style.display = 'none';}" type="button" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full" src="/store/avatar/{{userId}}.png" title="{{userName}}" alt="Avatar utilisateur">
+                            </button>
+                        </div>
+
+                        <div id="menuDeroulant" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" style="display: none;" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                            <a href="/{{typeAccount}}/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Tableau de Bord</a>
+
+                            <a href="/{{typeAccount}}/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Paramètres</a>
+
+                            <a href="/signout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Déconnexion</a>
+                        </div>
+                    </div>
+                </div>
+            {{/authenticated}}
+
+            {{^authenticated}}
+            <div class="hidden lg:block">
+                <a class="mr-2 inline-block px-4 py-3 text-xs text-blue-600 hover:text-blue-700 font-semibold leading-none border border-blue-200 hover:border-blue-300 rounded" href="/signin">
+                Se connecter
+            </a>
+                <a class="inline-block px-4 py-3 text-xs font-semibold leading-none bg-blue-600 hover:bg-blue-700 text-white rounded" href="/signup">
+                    S'inscrire
+                </a>
+            </div>
+            {{/authenticated}}
+        </nav>
+    </div>
+    <div class="hidden navbar-menu relative z-50">
+        <div class="navbar-backdrop fixed inset-0 bg-blueGray-800 opacity-25"></div>
+        <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+            <div class="flex items-center mb-8">
+                <a class="mr-auto text-3xl font-semibold leading-none" href="#"><img  src="/assets/metis-assets/logos/metis/logo.png" alt="" width="auto"></a>
+                <button class="navbar-close">
+                    <svg class="h-6 w-6 text-blueGray-400 cursor-pointer hover:text-blueGray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div>
+                <ul>
+                    <li class="mb-1"><a class="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600" href="/">Accueil</a></li>
+                    <li class="mb-1"><a class="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600" href="/offers">Offres</a></li>
+                    <li class="mb-1"><a class="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600" href="/faq">FAQ</a></li>
+                    <li class="mb-1"><a class="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600" href="/contact">Contact</a></li>
+                </ul>
+
+
+                {{#authenticated}}
+                <a href="#" class="flex-shrink-0 border-t group block">
+                    <div class="flex items-center p-4">
+                        <div>
+                            <img class="inline-block h-8 w-8 rounded-full" src="/store/avatar/{{userId}}.png" title="{{userName}}" alt="Avatar utilisateur">
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                                {{userName}}
+                            </p>
+                            <p class="text-xs capitalize font-medium text-gray-500 group-hover:text-gray-700">
+                                {{typeAccount}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <nav class="space-y-1 mb-2" aria-label="Sidebar">
+                    <a href="/{{typeAccount}}/dashboard" class="text-blueGray-500 hover:bg-blue-50 hover:text-blue-600 flex items-center px-3 py-2 text-sm rounded-md" aria-current="page">
+                        <svg class="text-gray-400 flex-shrink-0 ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        <span class="truncate">
+                            Tableau de Bord
+                         </span>
+                    </a>
+
+                    <a href="/{{typeAccount}}/settings" class="text-blueGray-500 hover:bg-blue-50 hover:text-blue-600 flex items-center px-3 py-2 text-sm rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 flex-shrink-0 ml-1 mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span class="truncate">
+                          Paramètres
+                        </span>
+                    </a>
+
+                    <a href="/signout" class="text-blueGray-500 hover:bg-blue-50 hover:text-blue-600 flex items-center px-3 py-2 text-sm rounded-md">
+                        <svg class="text-gray-400 flex-shrink-0 ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <span class="truncate">
+                          Déconnexion
+                        </span>
+                    </a>
+
+                </nav>
+
+
+                {{/authenticated}}
+
+
+                {{^authenticated}}
+                <div class="mt-4 pt-6 mb-2 border-t border-blueGray-100">
+                    <a class="block px-4 py-3 mb-2 text-xs text-center text-blue-600 hover:text-blue-700 font-semibold leading-none border border-blue-200 hover:border-blue-300 rounded" href="/signin">
+                        Se connecter
+                    </a>
+
+                    <a class="block px-4 py-3 mb-3 text-xs text-center font-semibold leading-none bg-blue-600 hover:bg-blue-700 text-white rounded" href="/signup">
+                        S'inscrire
+                    </a>
+                </div>
+                {{/authenticated}}
+            </div>
+            <div class="mt-auto">
+                <a class="inline-block px-1" href="#"><img src="/assets/metis-assets/icons/facebook-blue.svg" alt=""></a><a class="inline-block px-1" href="#"><img src="/assets/metis-assets/icons/twitter-blue.svg" alt=""></a><a class="inline-block px-1" href="#"><img src="/assets/metis-assets/icons/instagram-blue.svg" alt=""></a>
+            </div>
+        </nav>
+    </div>
+</section>
