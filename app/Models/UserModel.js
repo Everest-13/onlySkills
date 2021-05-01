@@ -137,7 +137,7 @@ exports.getCompanyNameWithId = function (id) {
     let response = db.prepare('SELECT CompanyName As name   FROM USER WHERE  id = ?');
 
 
-    let returner = (id == undefined) ? null : (response.get(id).name)
+    let returner = (response.get(id) == undefined) ? null : (response.get(id).name)
     return returner
 }
 

@@ -90,7 +90,7 @@ exports.getUserNameWithId = function (id)
     let response = db.prepare('SELECT firstName As name   FROM USER WHERE  id = ?');
 
 
-    let returner = (id == undefined) ? null : (response.get(id).name)
+    let returner = (response.get(id) == undefined) ? 'Admin' : (response.get(id).name)
     return returner
 }
 
@@ -101,7 +101,7 @@ exports.getUserLastNameWithId = function (id)
     let response = db.prepare('SELECT lastName As name   FROM USER WHERE  id = ?');
 
 
-    let returner = (id == undefined) ? null : (response.get(id).name)
+    let returner = (response.get(id) == undefined) ? 'Admin' : (response.get(id).name)
     return returner
 }
 
@@ -111,7 +111,7 @@ exports.getCompanyNameWithId = function (id)
     let response = db.prepare('SELECT CompanyName As name   FROM USER WHERE  id = ?');
 
 
-    let returner = (id == undefined) ? null : (response.get(id).name)
+    let returner = (response.get(id) == undefined) ? 'Futur(e) employé(e)' : (response.get(id).name)
     return returner
 }
 

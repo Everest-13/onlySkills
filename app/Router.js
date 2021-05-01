@@ -25,7 +25,7 @@ module.exports = function (app) {
     app.set('view engine', 'html');
     app.set('views', './app/Views');
 
-    var offers = require('./Controllers/contactOffers');
+    var offers = require('./Controllers/offersController');
 
     var messages = require('./Controllers/messagesController');
 
@@ -244,12 +244,12 @@ module.exports = function (app) {
 
         let Announce_id = (req.body.IdAnnonce != undefined) ? req.body.IdAnnonce : '0'
 
-
         let OtherUser = (req.session.userid != req.body.idSender) ? req.body.idSender : req.body.idDest
 
         OtherUser = (OtherUser == undefined) ? req.body.other : OtherUser
 
         if (req.body.newMessageContent != undefined) {
+            console.log(Announce_id)
             messages.addMessage(CurrentUser, OtherUser, req.body.newMessageContent, Announce_id)
         }
         res.render(__dirname + '/Views/user/employe/conversation', {

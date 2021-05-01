@@ -1,6 +1,6 @@
 var Sqlite = require('better-sqlite3');
 var db = new Sqlite('app/Database/db.sqlite');
-var offers = require('./contactOffers');
+var offers = require('./offersController');
 var User = require('./UserController');
 
 
