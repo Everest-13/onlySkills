@@ -2,7 +2,6 @@ const path = require("path");
 module.exports = function (app) {
 
 
-    var AdminIdAccount = 4
     var mustache = require('mustache-express');
     const multer = require("multer");
 
@@ -12,7 +11,8 @@ module.exports = function (app) {
 
     var csrfProtection = csrf({cookie: true});
 
-    var cookieParser = require('cookie-parser')
+    var cookieParser = require('cookie-parser');
+
     app.use(cookieParser());
 
     var parseForm = bodyParser.urlencoded({extended: false});
@@ -31,12 +31,12 @@ module.exports = function (app) {
 
     var messages_report = require('./Controllers/report_messagesController');
 
+    var userModel = require('./Models/UserModel');
+
+    var userController = require('./Controllers/UserController');
+
 
     app.get('/', function (req, res) {
-        res.cookie('nom', 'valeur', {
-            maxAge: 1000 * 60 * 15
-        });
-
         res.render('index');
     });
 
@@ -220,12 +220,11 @@ module.exports = function (app) {
         res.render(__dirname + '/Views/user/employe/offers', {offers: offers.listWhere(req.query.q)});
     });
 
-
     app.get('/employee/messages', is_authentificatedAsEmployee, function (req, res) {
         let conv = messages.getConversations(req.session.userid)
 
         for (let i = 0; i < conv.length; i++) {
-            conv[i].sender = (conv[i].sender == AdminIdAccount) ? 'L\' équipe de  OnlySkills' : 'L\' équipe de ' + userModel.getCompanyNameWithId(conv[i].sender)
+            conv[i].sender = (userModel.isAdministrator(conv[i].sender)) ? 'L\' équipe de  OnlySkills' : 'L\' équipe de ' + userModel.getCompanyNameWithId(conv[i].sender)
             conv[i].title = conv[i].announce
             if (conv[i].title == undefined) {
 
@@ -409,10 +408,6 @@ module.exports = function (app) {
             messagesRecieve: messages.countMessagesRecieve(req.session.userid),
             messagesSend: messages.countMessagesSend(req.session.userid)
         });
-    });
-
-    app.get('/company/cv', is_authentificatedAsCompany, function (req, res) {
-        res.render(__dirname + '/Views/user/company/cv');
     });
 
 
@@ -778,10 +773,6 @@ module.exports = function (app) {
     Routes Utilisateurs
      */
 
-    var userModel = require('./Models/UserModel');
-    var userController = require('./Controllers/UserController');
-
-
     app.post('/signup',
         [
             body('firstName').not().isEmpty().withMessage('Le prenom doit faire au moins 5 caractères'),
@@ -978,18 +969,18 @@ module.exports = function (app) {
     app.post('/employee/cv',
         function (req, res) {
 
-            if (req.body['cv-text'] !== null && req.body['cv-text'] !== '') {
+            if (req.body['cv-text'] !== null && req.body['cv-text'] !== '' && req.body['cv-text'] != undefined) {
                 userModel.changeUserCv('text', req.body['cv-text'], req.session.userid);
             }
 
-            if (req.body['motivation-text'] !== null && req.body['motivation-text'] !== '') {
+            if (req.body['motivation-text'] !== null && req.body['motivation-text'] !== '' && req.body['motivation-text'] != undefined) {
                 userModel.changeUserMotivation('text', req.body['motivation-text'], req.session.userid);
             }
 
             uploadCv(req, res, function (err) {
 
                 if (err) {
-                    console.log("not good format")
+                    //Rajouter message erreur
                 }
 
                 //Check si il y a bien un fichier qui s'upload
@@ -1002,7 +993,7 @@ module.exports = function (app) {
             uploadMotivation(req, res, function (err) {
 
                 if (err) {
-                    console.log("not good format")
+                    //Rajouter message erreur
                 }
 
                 if (typeof req.file !== 'undefined' && req.file.size > 0) {
@@ -1012,7 +1003,6 @@ module.exports = function (app) {
 
             res.redirect('/employee/cv');
 
-            //res.render(__dirname + '/Views/user/employe/cv', {errors: {allErrors: []}   });
         });
 
     /*

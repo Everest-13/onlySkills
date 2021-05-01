@@ -35,19 +35,12 @@ exports.userExistStatus = function (mailUser , firstName , lastName){
     if(Mail === 0  && Names === 0)return 3;
 
 
-
-
-
-
 }
 
 exports.getUserQuestion =function (mail){
     let question = db.prepare('SELECT questionForgot  AS q FROM USER WHERE  email = ?');
 
-
     return (question.get(mail).q)
-
-
 }
 
 
@@ -55,20 +48,14 @@ exports.getUserResponse =function (mail){
 
     let response = db.prepare('SELECT responseForgot As r   FROM USER WHERE  email = ?');
 
-
-    let returner = (mail == undefined  ) ? null :(response.get(mail).r)
-    return returner
-
+    return (mail == undefined  ) ? null :(response.get(mail).r)
 }
 
 
-exports.getUserName =function (mail){
+exports.getUserName = function (mail){
 
     let response = db.prepare('SELECT firstName As name   FROM USER WHERE  email = ?');
-
-
-    let returner = (mail == undefined  ) ? null :(response.get(mail).name)
-    return returner
+    return (mail == undefined  ) ? null :(response.get(mail).name)
 
 }
 
@@ -76,9 +63,6 @@ exports.getUserName =function (mail){
 exports.UpdatePassword =function (mail,new_password){
     let update =  db.prepare('UPDATE User SET password = ? WHERE email = ?')
      update.run(new_password,mail);
-
-
-
 }
 
 

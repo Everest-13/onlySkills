@@ -1,11 +1,7 @@
 var Sqlite = require('better-sqlite3');
 let db = new Sqlite(__dirname + '/../Database/db.sqlite');
 
-
-const path = require('path');
-
-
-const https = require('https'); // or 'https' for https:// URLs
+const https = require('https');
 const fs = require('fs');
 
 exports.ifExistAccount = function (email) {
@@ -114,21 +110,17 @@ exports.getUserNameWithMail = function (mail) {
 
 exports.getUserNameWithId = function (id) {
 
-    let response = db.prepare('SELECT firstName As name   FROM USER WHERE  id = ?');
+    let response = db.prepare('SELECT firstName As name FROM USER WHERE id = ?');
 
-
-    let returner = (id == undefined) ? null : (response.get(id).name)
-    return returner
+    return (id == undefined) ? null : (response.get(id).name)
 }
 
 
 exports.getUserLastNameWithId = function (id) {
 
-    let response = db.prepare('SELECT LastName As name   FROM USER WHERE  id = ?');
+    let response = db.prepare('SELECT LastName As name FROM USER WHERE id = ?');
 
-
-    let returner = (id == undefined) ? null : (response.get(id).name)
-    return returner
+    return (id == undefined) ? null : (response.get(id).name)
 }
 
 
@@ -136,9 +128,7 @@ exports.getCompanyNameWithId = function (id) {
 
     let response = db.prepare('SELECT CompanyName As name   FROM USER WHERE  id = ?');
 
-
-    let returner = (response.get(id) == undefined) ? null : (response.get(id).name)
-    return returner
+    return (response.get(id) == undefined) ? null : (response.get(id).name)
 }
 
 
@@ -243,11 +233,12 @@ exports.deleteFile = function (type, user_id) {
 
     if (type == "cv" && filesInfos.cv_file !== null) {
 
-        fs.exists(__dirname + '/../../' + filesInfos.cv_file, function (exists) {
-            if (exists) {
-                fs.unlink(filesInfos.cv_file);
-            }
-        });
+        try {
+            fs.unlinkSync(__dirname + '/../../public/' + filesInfos.cv_file);
+
+        } catch (error) {
+            console.log(error);
+        }
 
         let result = db.prepare('UPDATE user_employe SET cv_file = NULL WHERE id = ' + user_id);
 
@@ -256,11 +247,12 @@ exports.deleteFile = function (type, user_id) {
 
     if (type == "motivation" && filesInfos.motivation_file !== null) {
 
-        fs.exists(__dirname + '/../../' + filesInfos.motivation_file, function (exists) {
-            if (exists) {
-                fs.unlink(filesInfos.motivation_file);
-            }
-        });
+        try {
+            fs.unlinkSync(__dirname + '/../../public/' + filesInfos.motivation_file);
+
+        } catch (error) {
+            console.log(error);
+        }
 
         let result = db.prepare('UPDATE user_employe SET motivation_file = NULL WHERE id = ' + user_id);
 
@@ -301,4 +293,9 @@ exports.changeUserMotivation = function (type, text, user_id) {
         updateCvFile.run(text);
     }
 
+}
+
+exports.isAdministrator = function (user_id) {
+    let response = db.prepare('SELECT * FROM user WHERE id = ? AND typeAccount = 2');
+    return response.get(user_id) == undefined ? false : true;
 }

@@ -1,15 +1,30 @@
-# PROJET WEB
+# Onlyskills
+
+Ce projet a été développé dans le cadre de l'enseignement WEB à l'université d'AIX MARSEILLE UNIVERSITE par Nicolas MUCKENSTURM & Jordan MOUSSA.
+
+## Installation
+
+Pour utiliser notre projet veuillez installer [node](https://nodejs.org/fr/) & [npm](https://www.npmjs.com/package/npm) !
+
+```bash
+apt install -y nodejs
+apt install -y npm
+```
 
 
-CREATE TABLE user (id INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT, lastName TEXT, email TEXT, password TEXT, typeAccount INTEGER, questionForgot TEXT, responseForgot TEXT, companyName TEXT, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
-Pour eviter que ce soit le bordel dans la table USER
+Installez maintenant toutes les librairies nécessaires pour utiliser OnlySkills ! 
 
-CREATE TABLE user_employe (id INTEGER, avatar TEXT);
+```bash
+npm install
+```
 
-CREATE TABLE user_entreprise (id INTEGER, avatar TEXT);
+## Utilisation
 
-Pour utilisateur 0 est employé et entreprise 1
+```bash
+node server.js
+```
 
-CREATE TABLE user_cv_motivation (user_id INTEGER NOT NULL, cv_text TEXT NULL, cv_upload TEXT NULL, motivation_text TEXT NULL, motivation_upload TEXT NULL);
+Ensuite, ouvrez cette url dans votre navigateur préféré ! [http://localhost:3000/](http://localhost:3000/)
 
-Les utilisateurs non entreprise ont une entreprise qui s'appelle NULL
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
